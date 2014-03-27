@@ -1,5 +1,0 @@
-Have a few things that I need to work on.
-1) figure out were to set the clock.
-2) see about getting the time ti print in 4 different fields. DONE!!
-3) set up a frame for the clock.
-4) set up the data structure for the clock

@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -14,7 +15,7 @@ import javax.swing.JLabel;
  */
 public class Display extends JFrame
 {
-    ClockDisplay clock_Display;
+    //ClockDisplay clock_Display;
     JFrame frame;
     int width;
     int height;
@@ -23,7 +24,7 @@ public class Display extends JFrame
     {
         this.width = width;
         this.height = height;
-        clock_Display = clock_Display;
+        //clock_Display = clock_Display;
         clock_Label = label;
         frame = new JFrame();
         frame.setBackground(Color.BLACK);

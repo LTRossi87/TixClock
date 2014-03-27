@@ -16,8 +16,8 @@ import javax.swing.Timer;
 public class TixClock
 {
     private static final int DELAY = 1000;
-    private static final int CLOCK_WIDTH = 200;//900;//600; //780
-    private static final int CLOCK_HEIGHT = 69;//312;//208;//270;
+    private static final int CLOCK_WIDTH = 300;//900;//600; //780
+    private static final int CLOCK_HEIGHT = 138;//312;//208;//270;
     public static void main(String args[])
     {
 
@@ -32,17 +32,26 @@ public class TixClock
         Timer time = new Timer(DELAY, new ActionListener()
         {
             int count = 0;
+            int change = 0;
             @Override
             public void actionPerformed(ActionEvent ae)
             {
+
                 count++;
+                change++;
                 if(count % 5 == 0)
                 {
                     clock.updateTime();
                     clock_Display.fillClocks(clock);
-                    System.out.println(clock.getHour1() + " " + clock.getHour2() + " " + clock.getMinute1() + " " + clock.getMinute2());
+                    //System.out.println(clock.getHour1() + " " + clock.getHour2() + " " + clock.getMinute1() + " " + clock.getMinute2());
                     label.repaint();
                     count = 0;
+                }
+                if(change == 30)
+                {
+                    clock_Display.updateColor();
+                    change = 0;
+                    label.repaint();
                 }
             }
         });

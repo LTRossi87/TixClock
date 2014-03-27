@@ -1,7 +1,6 @@
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
 /*
@@ -25,11 +24,11 @@ public class ClockDisplay
     int space;
     int spaceBetSlot;
 
-    final Color background = Color.GRAY;
-    final Color cSlot1 = Color.RED;
-    final Color cSlot2 = Color.ORANGE;
-    final Color cSlot3 = Color.GREEN;
-    final Color cSlot4 = Color.BLUE;
+    final Color background = Color.DARK_GRAY;
+    Color cSlot1 = Color.RED;
+    Color cSlot2 = Color.GREEN;
+    Color cSlot3 = Color.RED;
+    Color cSlot4 = Color.GREEN;
     final int sizeSlot1 = 3;
     final int sizeSlot2 = 10;
     final int sizeSlot3 = 6;
@@ -78,6 +77,58 @@ public class ClockDisplay
         spaceBetSlot = squareWidth + space;
         fillClocksInit(background);
 
+        slot2[0][0] = cSlot2;
+        slot2[1][0] = cSlot2;
+        slot2[2][0] = cSlot2;
+        slot2[1][1] = cSlot2;
+        slot2[1][2] = cSlot2;
+
+        slot3[0][0] = cSlot3;
+        slot3[0][1] = cSlot3;
+        slot3[0][2] = cSlot3;
+
+        slot4[0][0] = cSlot4;
+        slot4[1][1] = cSlot4;
+        slot4[2][2] = cSlot4;
+        slot4[0][2] = cSlot4;
+        slot4[2][0] = cSlot4;
+
+
+    }
+
+    public void updateColor()
+    {
+
+        if(cSlot1 == Color.RED && cSlot2 == Color.GREEN && cSlot3 == Color.RED && cSlot4 == Color.GREEN)
+        {
+            cSlot1 = Color.ORANGE;
+             cSlot2 = Color.MAGENTA;
+            cSlot3 = Color.ORANGE;
+            cSlot4 = Color.MAGENTA;
+        }
+        else if(cSlot1 == Color.GREEN && cSlot2 == Color.RED && cSlot3 == Color.GREEN && cSlot4 == Color.RED)
+        {
+            cSlot1 = Color.MAGENTA;
+            cSlot2 = Color.ORANGE;
+            cSlot3 = Color.MAGENTA;
+            cSlot4 = Color.ORANGE;
+        }
+        else if(cSlot1 == Color.ORANGE && cSlot2 == Color.MAGENTA && cSlot3 == Color.ORANGE && cSlot4 == Color.MAGENTA)
+        {
+            cSlot1 = Color.GREEN;
+            cSlot2 = Color.RED;
+            cSlot3 = Color.GREEN;
+            cSlot4 = Color.RED;
+        }
+        else
+        {
+            cSlot1 = Color.RED;
+            cSlot2 = Color.GREEN;
+            cSlot3 = Color.RED;
+            cSlot4 = Color.GREEN;
+        }
+
+
     }
 
     public void draw(Graphics2D g2)
@@ -90,8 +141,8 @@ public class ClockDisplay
         {
             g2.setColor(slot1[i]);
             //x, y, width, height
-            //g2.fillRect(startX, startY + (i * (space + squareHeight)), squareWidth, squareHeight);
-            g2.fillOval(startX, startY + (i * (space + squareHeight)), squareWidth, squareHeight);
+            g2.fillRect(startX, startY + (i * (space + squareHeight)), squareWidth, squareHeight);
+            //g2.fillOval(startX, startY + (i * (space + squareHeight)), squareWidth, squareHeight);
         }
 
         //Slot2
@@ -114,8 +165,8 @@ public class ClockDisplay
                 g2.setColor(slot3[i][j]);
                 //x, y, width, height
 
-                //g2.fillRect(startX  + (squareWidth * 4) + (spaceBetSlot * 2) + (space * 2) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
-                g2.fillOval(startX  + (squareWidth * 4) + (spaceBetSlot * 2) + (space * 2) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
+                g2.fillRect(startX  + (squareWidth * 4) + (spaceBetSlot * 2) + (space * 2) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
+                //g2.fillOval(startX  + (squareWidth * 4) + (spaceBetSlot * 2) + (space * 2) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
             }
         }
 
@@ -126,8 +177,8 @@ public class ClockDisplay
             {
                 g2.setColor(slot4[i][j]);
                 //x, y, width, height
-                //g2.fillRect(startX + (squareWidth * 6) + (spaceBetSlot * 3) + (space * 3) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
-                g2.fillOval(startX + (squareWidth * 6) + (spaceBetSlot * 3) + (space * 3) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
+                g2.fillRect(startX + (squareWidth * 6) + (spaceBetSlot * 3) + (space * 3) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
+                //g2.fillOval(startX + (squareWidth * 6) + (spaceBetSlot * 3) + (space * 3) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
             }
         }
     }

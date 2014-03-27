@@ -43,5 +43,4 @@ public class ClockIcon implements Icon
     {
         return height;
     }
-
 }

@@ -29,10 +29,14 @@ public class ClockDisplay
     Color cSlot2 = Color.GREEN;
     Color cSlot3 = Color.RED;
     Color cSlot4 = Color.GREEN;
+    Color cSlot5 = Color.LIGHT_GRAY;
+    Color cSlot6 = cSlot5;
     final int sizeSlot1 = 3;
     final int sizeSlot2 = 10;
     final int sizeSlot3 = 6;
     final int sizeSlot4 = sizeSlot2;
+    final int sizeSlot5 = sizeSlot3;
+    final int sizeSlot6 = sizeSlot2;
 
     /* Slot 1 demensions
      * []   IN ARRAY FORM IT LOOKS LIKE [][][]
@@ -62,12 +66,29 @@ public class ClockDisplay
      */
     Color[][] slot4;
 
+    /* Slot 5 demensions
+     * [][]
+     * [][]
+     * [][]
+     */
+    Color[][] slot5;
+
+    /* Slot 6 demensions
+     * [][][]
+     * [][][]
+     * [][][]
+     */
+    Color[][] slot6;
+
+
     public ClockDisplay(int width, int height)
     {
         slot1 = new Color[3];
         slot2 = new Color[3][3];
         slot3 = new Color[2][3];
         slot4 = new Color[3][3];
+        slot5 = new Color[2][3];
+        slot6 = new Color[3][3];
 
         squareWidth = ((height-20)-titlePadding)/5;
         squareHeight = squareWidth;
@@ -181,6 +202,32 @@ public class ClockDisplay
                 //g2.fillOval(startX + (squareWidth * 6) + (spaceBetSlot * 3) + (space * 3) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
             }
         }
+
+        //Slot5
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                g2.setColor(slot5[i][j]);
+                //x, y, width, height
+
+                g2.fillRect(startX  + (squareWidth * 9) + (spaceBetSlot * 4) + (space * 4) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
+                //g2.fillOval(startX  + (squareWidth * 4) + (spaceBetSlot * 2) + (space * 2) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
+            }
+        }
+
+        //Slot6
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                g2.setColor(slot6[i][j]);
+                //x, y, width, height
+                g2.fillRect(startX + (squareWidth * 11) + (spaceBetSlot * 5) + (space * 5) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
+                //g2.fillOval(startX + (squareWidth * 6) + (spaceBetSlot * 3) + (space * 3) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
+            }
+        }
+
     }
 
     public void fillClocks(Clock clock)
@@ -190,6 +237,8 @@ public class ClockDisplay
         int hour2 = clock.getHour2();
         int minute1 = clock.getMinute1();
         int minute2 = clock.getMinute2();
+        int second1 = clock.getSeconds1();
+        int second2 = clock.getSeconds2();
 
         Random rand = new Random();
 
@@ -454,7 +503,184 @@ public class ClockDisplay
                 }
             }
             slot4[tempX][tempY] = cSlot4;
+        }
 
+
+    }
+
+    private void fillColor3X3()
+    {
+
+    }
+
+    private void fillColor2X3(Color[][] c, int size)
+    {
+        for (int i = 0; i < second1; i++)
+        {
+            int temp = rand.nextInt(sizeSlot5);
+            int tempX = 0;
+            int tempY = 0;
+            switch (temp)
+            {
+                case 0:
+                    tempX = 0;
+                    tempY = 0;
+                    break;
+                case 1:
+                    tempX = 0;
+                    tempY = 1;
+                    break;
+                case 2:
+                    tempX = 0;
+                    tempY = 2;
+                    break;
+                case 3:
+                    tempX = 1;
+                    tempY = 0;
+                    break;
+                case 4:
+                    tempX = 1;
+                    tempY = 1;
+                    break;
+                case 5:
+                    tempX = 1;
+                    tempY = 2;
+                    break;
+            }
+            while (slot5[tempX][tempY] != background)
+            {
+                temp = rand.nextInt(sizeSlot5);
+                switch (temp)
+                {
+                    case 0:
+                        tempX = 0;
+                        tempY = 0;
+                        break;
+                    case 1:
+                        tempX = 0;
+                        tempY = 1;
+                        break;
+                    case 2:
+                        tempX = 0;
+                        tempY = 2;
+                        break;
+                    case 3:
+                        tempX = 1;
+                        tempY = 0;
+                        break;
+                    case 4:
+                        tempX = 1;
+                        tempY = 1;
+                        break;
+                    case 5:
+                        tempX = 1;
+                        tempY = 2;
+                        break;
+                }
+            }
+            slot5[tempX][tempY] = cSlot5;
+        }
+    }
+
+    public void fillSeconds(Clock clock)
+    {
+        fillClockSecondsInit(background);
+        int second1 = clock.getSeconds1();
+        int second2 = clock.getSeconds2();
+
+        Random rand = new Random();
+        //Fills slot5 with the colors
+
+
+        //Fills slot6 with the colors
+        for (int i = 0; i < second2; i++)
+        {
+            int temp = rand.nextInt(sizeSlot6);
+            int tempX = 0;
+            int tempY = 0;
+            switch (temp)
+            {
+                case 0:
+                    tempX = 0;
+                    tempY = 0;
+                    break;
+                case 1:
+                    tempX = 0;
+                    tempY = 1;
+                    break;
+                case 2:
+                    tempX = 0;
+                    tempY = 2;
+                    break;
+                case 3:
+                    tempX = 1;
+                    tempY = 0;
+                    break;
+                case 4:
+                    tempX = 1;
+                    tempY = 1;
+                    break;
+                case 5:
+                    tempX = 1;
+                    tempY = 2;
+                    break;
+                case 6:
+                    tempX = 2;
+                    tempY = 0;
+                    break;
+                case 7:
+                    tempX = 2;
+                    tempY = 1;
+                    break;
+                case 8:
+                    tempX = 2;
+                    tempY = 2;
+                    break;
+            }
+            while (slot6[tempX][tempY] != background)
+            {
+                temp = rand.nextInt(sizeSlot6);
+                switch (temp)
+                {
+                    case 0:
+                        tempX = 0;
+                        tempY = 0;
+                        break;
+                    case 1:
+                        tempX = 0;
+                        tempY = 1;
+                        break;
+                    case 2:
+                        tempX = 0;
+                        tempY = 2;
+                        break;
+                    case 3:
+                        tempX = 1;
+                        tempY = 0;
+                        break;
+                    case 4:
+                        tempX = 1;
+                        tempY = 1;
+                        break;
+                    case 5:
+                        tempX = 1;
+                        tempY = 2;
+                        break;
+                    case 6:
+                        tempX = 2;
+                        tempY = 0;
+                        break;
+                    case 7:
+                        tempX = 2;
+                        tempY = 1;
+                        break;
+                    case 8:
+                        tempX = 2;
+                        tempY = 2;
+                        break;
+                }
+            }
+            slot6[tempX][tempY] = cSlot6;
         }
     }
 
@@ -472,6 +698,23 @@ public class ClockDisplay
                 if (i < 2)
                 {
                     slot3[i][j] = color;
+                }
+            }
+        }
+    }
+
+    private void fillClockSecondsInit(Color color)
+    {
+        //i should be going along the x-axis
+        for (int i = 0; i < 3; i++)
+        {
+            //j should be going along the y-axix
+            for (int j = 0; j < 3; j++)
+            {
+                slot6[i][j] = color;
+                if (i < 2)
+                {
+                    slot5[i][j] = color;
                 }
             }
         }
@@ -495,5 +738,15 @@ public class ClockDisplay
     public Color[][] getSlot4()
     {
         return slot4;
+    }
+
+    public Color[][] getSlot5()
+    {
+        return slot5;
+    }
+
+    public Color[][] getSlot6()
+    {
+        return slot6;
     }
 }

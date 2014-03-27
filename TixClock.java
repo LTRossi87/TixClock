@@ -1,5 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
@@ -16,8 +18,8 @@ import javax.swing.Timer;
 public class TixClock
 {
     private static final int DELAY = 1000;
-    private static final int CLOCK_WIDTH = 715;//300;//900;//600; //780
-    private static final int CLOCK_HEIGHT = 270;//138;//312;//208;//270;
+    private static final int CLOCK_WIDTH = 750;//300;//900;//600; //780
+    private static final int CLOCK_HEIGHT = 200;//138;//312;//208;//270;
     public static void main(String args[])
     {
 
@@ -28,7 +30,6 @@ public class TixClock
         final JLabel label = new JLabel(icon);
         Display display = new Display(label, CLOCK_WIDTH, CLOCK_HEIGHT);
 
-
         Timer time = new Timer(DELAY, new ActionListener()
         {
             int count = 0;
@@ -36,23 +37,23 @@ public class TixClock
             @Override
             public void actionPerformed(ActionEvent ae)
             {
-
                 count++;
                 change++;
+                clock.updateSeconds(new GregorianCalendar(TimeZone.getDefault()));
+                clock_Display.fillSeconds(clock);
                 if(count % 5 == 0)
                 {
                     clock.updateTime();
                     clock_Display.fillClocks(clock);
                     //System.out.println(clock.getHour1() + " " + clock.getHour2() + " " + clock.getMinute1() + " " + clock.getMinute2());
-                    label.repaint();
                     count = 0;
                 }
                 if(change == 30)
                 {
                     clock_Display.updateColor();
                     change = 0;
-                    label.repaint();
                 }
+                label.repaint();
             }
         });
         time.start();

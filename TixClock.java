@@ -25,8 +25,8 @@ public class TixClock
     private static final int UPDATE = 5;
     private static final int CHANGE_COLOR = 30;
     //Size of the frame 3.75 ratio
-    private static final int CLOCK_WIDTH = 375; //750
-    private static final int CLOCK_HEIGHT = 120; //200
+    private static final int CLOCK_WIDTH = 750;//375; //750
+    private static final int CLOCK_HEIGHT = 200;//120; //200
 
     public static void main(String args[])
     {

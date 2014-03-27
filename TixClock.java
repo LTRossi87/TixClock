@@ -16,8 +16,8 @@ import javax.swing.Timer;
 public class TixClock
 {
     private static final int DELAY = 1000;
-    private static final int CLOCK_WIDTH = 300;//900;//600; //780
-    private static final int CLOCK_HEIGHT = 138;//312;//208;//270;
+    private static final int CLOCK_WIDTH = 715;//300;//900;//600; //780
+    private static final int CLOCK_HEIGHT = 270;//138;//312;//208;//270;
     public static void main(String args[])
     {
 

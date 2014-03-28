@@ -1,5 +1,7 @@
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -23,6 +25,8 @@ public class Display extends JFrame
     int width;
     int height;
     JLabel clock_Label;
+    double widthX = 1430;
+    double heightY = 990;
     /**
      * Constructs a new Display with a label a width and a height
      * @param label the label containing the clock display icon
@@ -31,19 +35,34 @@ public class Display extends JFrame
      */
     public Display(JLabel label, int width, int height)
     {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double widthX = screenSize.getWidth();
+        double heightY = screenSize.getHeight();
         this.width = width;
         this.height = height;
         //clock_Display = clock_Display;
         clock_Label = label;
+
         frame = new JFrame();
-        frame.setBackground(Color.BLACK);
+
         frame.add(label);
-
+        frame.setBackground(Color.BLACK);
+        frame.setBounds((int)widthX-width, (int)heightY-25-height, width, height);
         frame.setTitle("TixClock");
-        frame.setSize(width, height);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        frame.setUndecorated(true);
+        frame.setAutoRequestFocus(true);
+        frame.setResizable(true);
         frame.setVisible(true);
-
+        frame.setAlwaysOnTop(true);
     }
+
+
+
+
+
+
+
+
+
 }

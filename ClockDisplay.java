@@ -36,6 +36,10 @@ public class ClockDisplay
     int space;
     int spaceBetSlot;
 
+    int width;
+    int height;
+
+
     final Color background = Color.DARK_GRAY;
     Color cSlot1 = Color.RED;
     Color cSlot2 = Color.GREEN;
@@ -97,7 +101,7 @@ public class ClockDisplay
      * @param width the width of the frame
      * @param height the height of the frame
      */
-    public ClockDisplay(int width, int height)
+    public ClockDisplay(int height)
     {
         //The 6 data structures that will hold the time
         slot1 = new Color[3];    // hour 1
@@ -107,12 +111,15 @@ public class ClockDisplay
         slot5 = new Color[2][3]; // second 1
         slot6 = new Color[3][3]; // second 2
 
+
+        this.height = height;
+
         //Calculates the width of the square based on the height of the frame accounting for the title bar
-        squareWidth = ((height-20)-titlePadding)/5;
+        squareWidth = ((height))/5;
         //Height of the square is the same as the width
         squareHeight = squareWidth;
         //Starting X position on the frame
-        startX = squareWidth + 1;
+        startX = squareWidth;
         //Starting Y position on the frame
         startY = startX;
         //Space between the squares
@@ -122,6 +129,8 @@ public class ClockDisplay
         //Fills the all the squares in the slots to gray
         fillClocksInit(background);
         fillClockSecondsInit(background);
+
+        this.width = (startX * 2) + (squareWidth * 14) + (spaceBetSlot * 5) + (space * 8);
 
         /*
          * This displays the title message of TIX
@@ -141,8 +150,11 @@ public class ClockDisplay
         slot4[2][2] = cSlot4;
         slot4[0][2] = cSlot4;
         slot4[2][0] = cSlot4;
+    }
 
-
+    public int getWidth()
+    {
+        return this.width;
     }
 
     /**
@@ -151,6 +163,9 @@ public class ClockDisplay
      */
     public void draw(Graphics2D g2)
     {
+        //Set Background color to black
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0, 0, width, height);
         //Slot1
         for (int i = 0; i < 3; i++)
         {
@@ -221,6 +236,7 @@ public class ClockDisplay
                 //g2.fillOval(startX + (squareWidth * 6) + (spaceBetSlot * 3) + (space * 3) + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
             }
         }
+
     }
 
     /**

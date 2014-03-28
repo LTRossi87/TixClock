@@ -25,18 +25,15 @@ public class TixClock
     private static final int UPDATE = 5;
     private static final int CHANGE_COLOR = 30;
     //Size of the frame 3.75 ratio
-    private static final int CLOCK_WIDTH = 750;//375; //750
-    private static final int CLOCK_HEIGHT = 200;//120; //200
 
+    private static final int CLOCK_HEIGHT = 50;
     public static void main(String args[])
     {
-
-
         final Clock clock = new Clock();
-        final ClockDisplay clock_Display = new ClockDisplay(CLOCK_WIDTH, CLOCK_HEIGHT);
-        ClockIcon icon = new ClockIcon(clock_Display, CLOCK_WIDTH, CLOCK_HEIGHT);
+        final ClockDisplay clock_Display = new ClockDisplay(CLOCK_HEIGHT);
+        ClockIcon icon = new ClockIcon(clock_Display, clock_Display.getWidth(), CLOCK_HEIGHT);
         final JLabel label = new JLabel(icon);
-        Display display = new Display(label, CLOCK_WIDTH, CLOCK_HEIGHT);
+        Display display = new Display(label, clock_Display.getWidth(), CLOCK_HEIGHT);
 
         /*
          *A Timmer object that deals with counting time on 1 second intervals

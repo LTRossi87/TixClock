@@ -47,7 +47,7 @@ public class Display extends JFrame
 
         frame.add(label);
         frame.setBackground(Color.BLACK);
-        frame.setBounds((int)widthX-width, (int)heightY-height, width, height);
+        frame.setBounds((int)widthX-width-5, (int)heightY-height-5, width, height);
         frame.setTitle("TixClock");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setUndecorated(true);

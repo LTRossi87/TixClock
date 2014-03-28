@@ -26,7 +26,7 @@ public class TixClock
     private static final int CHANGE_COLOR = 30;
     //Size of the frame 3.75 ratio
 
-    private static final int CLOCK_HEIGHT = 50;
+    private static int CLOCK_HEIGHT = 50;
     public static void main(String args[])
     {
         final Clock clock = new Clock();

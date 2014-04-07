@@ -1,6 +1,10 @@
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -49,11 +53,6 @@ public class Display extends JFrame
         heightY = (int)screenSize.getHeight();
         this.width = width;
         this.height = height;
-
-        //Multi Display??
-//        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-//        widthX = gd.getDisplayMode().getWidth();
-//        heightY = gd.getDisplayMode().getHeight();
 
         //clock_Display = clock_Display;
         clock_Label = label;

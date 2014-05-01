@@ -19,14 +19,14 @@ import java.util.TimeZone;
  */
 public class Clock
 {
-    int hour;
-    int hour1;
-    int hour2;
-    int minute;
-    int minute1;
-    int minute2;
-    int second1;
-    int second2;
+    private int hour;
+    private int hour1;
+    private int hour2;
+    private int minute;
+    private int minute1;
+    private int minute2;
+    private int second1;
+    private int second2;
 
     /**
      * Constructs a new Clock object

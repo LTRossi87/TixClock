@@ -2,15 +2,14 @@
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+ /**
+  * This class has not been implemented yet, This will be used to set the
+  * size of the frame. When the user starts the program they will be prompted
+  * with the size they want the clock to be when they select the size the clock
+  * will open with that size.
+  */
 
 /**
  *
@@ -18,17 +17,20 @@ import javax.swing.JFrame;
  */
 public class SizeFrame extends JFrame
 {
+    //the size of the frame on the screen
     private static final int SMALL = 50;
     private static final int MEDIUM = 100;
     private static final int LARGE = 150;
     private int size;
-    final JFrame sizeFrame;
-    JButton size1;
-    JButton size2;
-    JButton size3;
-    boolean selected = false;
+    private final JFrame sizeFrame;
+    private final JButton size1;
+    private final JButton size2;
+    private final JButton size3;
+    private boolean selected;
+
     public SizeFrame()
     {
+        this.selected = false;
         sizeFrame = new JFrame();
         size1 = new JButton("Small");
         size2 = new JButton("Medium");

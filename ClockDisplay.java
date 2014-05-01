@@ -29,80 +29,93 @@ public class ClockDisplay
 {
     final int titlePadding = 20;
     //Colors for the clock
-    int squareWidth;
-    int squareHeight;
-    int startX;
-    int startY;
-    int space;
-    int spaceBetSlot;
+    private final int squareWidth;
+    private final int squareHeight;
+    private final int startX;
+    private final int startY;
+    private final int space;
+    private final int spaceBetSlot;
 
-    int width;
-    int height;
+    private final int width;
+    private final int height;
 
 
-    final Color background = Color.DARK_GRAY;
-    Color cSlot1 = Color.RED;
-    Color cSlot2 = Color.GREEN;
-    Color cSlot3 = Color.RED;
-    Color cSlot4 = Color.GREEN;
-    Color cSlot5 = Color.LIGHT_GRAY;
-    Color cSlot6 = cSlot5;
-    final int sizeSlot1 = 3;
-    final int sizeSlot2 = 10;
-    final int sizeSlot3 = 6;
-    final int sizeSlot4 = sizeSlot2;
-    final int sizeSlot5 = sizeSlot3;
-    final int sizeSlot6 = sizeSlot2;
+    private final Color background;
+    private Color cSlot1;
+    private Color cSlot2;
+    private Color cSlot3;
+    private Color cSlot4;
+    private final Color cSlot5;
+    private final Color cSlot6;
+    private final int sizeSlot1;
+    private final int sizeSlot2;
+    private final int sizeSlot3;
+    private final int sizeSlot4;
+    private final int sizeSlot5;
+    private final int sizeSlot6;
 
     /* Slot 1 demensions
      * []   IN ARRAY FORM IT LOOKS LIKE [][][]
      * []
      * []
      */
-    Color[] slot1;
+    private final Color[] slot1;
 
     /* Slot 2 demensions
      * [][][]
      * [][][]
      * [][][]
      */
-    Color[][] slot2;
+    private final Color[][] slot2;
 
     /* Slot 3 demensions
      * [][]
      * [][]
      * [][]
      */
-    Color[][] slot3;
+    private final Color[][] slot3;
 
     /* Slot 4 demensions
      * [][][]
      * [][][]
      * [][][]
      */
-    Color[][] slot4;
+    private final Color[][] slot4;
 
     /* Slot 5 demensions
      * [][]
      * [][]
      * [][]
      */
-    Color[][] slot5;
+    private final Color[][] slot5;
 
     /* Slot 6 demensions
      * [][][]
      * [][][]
      * [][][]
      */
-    Color[][] slot6;
+    private final Color[][] slot6;
 
     /**
      * Creates a new ClockDisplay with the width and height of the frame
-     * @param width the width of the frame
      * @param height the height of the frame
      */
     public ClockDisplay(int height)
     {
+        this.background = Color.DARK_GRAY;
+        this.cSlot1 = Color.RED;
+        this.cSlot2 = Color.GREEN;
+        this.cSlot3 = Color.RED;
+        this.cSlot4 = Color.GREEN;
+        this.cSlot5 = Color.LIGHT_GRAY;
+        this.cSlot6 = cSlot5;
+        this.sizeSlot1 = 3;
+        this.sizeSlot2 = 10;
+        this.sizeSlot3 = 6;
+        this.sizeSlot4 = sizeSlot2;
+        this.sizeSlot5 = sizeSlot3;
+        this.sizeSlot6 = sizeSlot2;
+
         //The 6 data structures that will hold the time
         slot1 = new Color[3];    // hour 1
         slot2 = new Color[3][3]; // hour 2
@@ -134,6 +147,9 @@ public class ClockDisplay
 
         /*
          * This displays the title message of TIX
+         * [ ] [*][*][*] [ ][*] [*][ ][*]
+         * [ ] [ ][*][ ] [ ][*] [ ][*][ ]
+         * [ ] [ ][*][ ] [ ][*] [*][ ][*]
          */
         slot2[0][0] = cSlot2;
         slot2[1][0] = cSlot2;
@@ -182,7 +198,7 @@ public class ClockDisplay
             {
                 g2.setColor(slot2[i][j]);
                 //x, y, width, height
-                g2.fillRect(startX + squareWidth + spaceBetSlot + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
+                g2.fillRect(startX + squareWidth + spaceBetSlot + ((squareWidth + space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
                 //g2.fillOval(startX + squareWidth + spaceBetSlot + ((squareWidth+ space) * i), startY + (j * (space + squareHeight)), squareWidth, squareHeight);
             }
         }
@@ -370,11 +386,17 @@ public class ClockDisplay
      */
      private void fillColor1X3(Color[] slots, int sizeOfSlot, Color col, int length)
     {
-         Random rand = new Random();
+        Random rand = new Random();
         //Fills slot1 with the colors
         for (int i = 0; i < length; i++)
         {
             int temp = rand.nextInt(sizeOfSlot);
+            /*
+             *
+             * If the color of the slot is not equal to the background color then
+             * then keep selecting another slot. otherwise change the color of the
+             * slot
+            */
             while (slots[temp] != background)
             {
                 temp = rand.nextInt(sizeOfSlot);

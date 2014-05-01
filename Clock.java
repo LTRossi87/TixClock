@@ -19,10 +19,8 @@ import java.util.TimeZone;
  */
 public class Clock
 {
-    private int hour;
     private int hour1;
     private int hour2;
-    private int minute;
     private int minute1;
     private int minute2;
     private int second1;
@@ -33,10 +31,8 @@ public class Clock
      */
     public Clock()
     {
-        hour = 0;
         hour1 = 0;
         hour2 = 0;
-        minute = 0;
         minute1 = 0;
         minute2 = 0;
         second1 = 0;

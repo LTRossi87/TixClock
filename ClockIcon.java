@@ -20,9 +20,9 @@ import javax.swing.Icon;
  */
 public class ClockIcon implements Icon
 {
-    private int width;
-    private int height;
-    ClockDisplay clock_Display;
+    private final int width;
+    private final int height;
+    private final ClockDisplay clock_Display;
     /**
      * Constructs a new Clock Icon with a clock display a width and a height
      * @param clockDisp the clock display

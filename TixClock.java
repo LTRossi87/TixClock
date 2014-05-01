@@ -26,7 +26,7 @@ public class TixClock
     private static final int CHANGE_COLOR = 30;
     //Size of the frame 3.75 ratio
 
-    private static int CLOCK_HEIGHT = 50;
+    private static final int CLOCK_HEIGHT = 50;
     public static void main(String args[])
     {
         final Clock clock = new Clock();
@@ -43,20 +43,21 @@ public class TixClock
         Timer time = new Timer(DELAY, new ActionListener()
         {
             //Count to keep track of how often the clock is to be redrawn
-            int count = 0;
+            private int count = 0;
             //Coint to keep track of how often the clock is to be recolored
-            int change = 0;
+            private int change = 0;
 
             @Override
             public void actionPerformed(ActionEvent ae)
             {
                 count++;
                 change++;
-                //Updates the seconds of the clock
+                //Updates the seconds of the clock every second
                 clock.updateSeconds(new GregorianCalendar(TimeZone.getDefault()));
                 clock_Display.fillSeconds(clock);
 
                 //Every UPDATE seconds the clock will redisplay itself in a different order
+                //every 5 seconds update the hour and minutes
                 if(count % UPDATE == 0)
                 {
                     clock.updateTime();

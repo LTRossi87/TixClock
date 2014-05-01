@@ -1,10 +1,6 @@
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -32,12 +28,12 @@ public class Display extends JFrame
 {
     //ClockDisplay clock_Display;
 
-    JFrame frame;
-    int width;
-    int height;
-    JLabel clock_Label;
-    int widthX;
-    int heightY;
+    private JFrame frame;
+    private final int width;
+    private final int height;
+    private final JLabel clock_Label;
+    private int widthX;
+    private int heightY;
 
     /**
      * Constructs a new Display with a label a width and a height
@@ -57,10 +53,11 @@ public class Display extends JFrame
         //clock_Display = clock_Display;
         clock_Label = label;
 
+        //Sets up the frame
         frame = new JFrame();
-        frame.add(label);
+        frame.add(clock_Label);
         frame.setBackground(Color.BLACK);
-        frame.setBounds(widthX - width - 5, heightY - height - 5, width, height);
+        frame.setBounds(widthX - width - 5, heightY - height - 5, this.width, this.height);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setUndecorated(true);
         frame.setVisible(true);
@@ -78,10 +75,10 @@ public class Display extends JFrame
         frame.addMouseMotionListener(new MouseAdapter()
         {
             @Override
-            public void mouseDragged(MouseEvent evt)
+            public void mouseDragged(MouseEvent event)
             {
                 //sets frame position when mouse dragged
-                frame.setLocation(evt.getXOnScreen() - widthX, evt.getYOnScreen() - heightY);
+                frame.setLocation(event.getXOnScreen() - widthX, event.getYOnScreen() - heightY);
             }
         });
     }
